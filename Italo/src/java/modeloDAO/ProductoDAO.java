@@ -54,12 +54,15 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
 
     @Override
     public boolean agregarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        try {
+            query = "INSERT INTO producto (idProducto,nombre,descripcion,precio) VALUES (NULL,'" + nombre + "','" + descripcion + "','" + precio + "')";
 
-    @Override
-    public ArrayList consultarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            statement.executeUpdate(query);
+            operacion = true;
+        } catch (Exception e) {
+            System.out.println("Error al registrar el Producto " + e.toString());
+        }
+        return operacion;
     }
 
     @Override
@@ -77,4 +80,9 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public static void main(String[] args) {
+        ProductoVO productoVO = new ProductoVO("", "botilito", "metalico negro", "20000");
+        ProductoDAO productoDAO = new ProductoDAO(productoVO);
+        productoDAO.agregarRegistro();
+    }
 }
