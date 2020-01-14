@@ -102,13 +102,21 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
 
     @Override
     public boolean eliminarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            query = "DELETE FROM producto WHERE producto.idProducto = "+idProducto;
+            statement.executeUpdate(query);
+            operacion = true;
+        } catch (Exception e) {
+            System.out.println("Error al borrar el Producto " + e.toString());
+        }
+        return operacion;
     }
 
-    public static void main(String[] args) {
-        ProductoVO productoVO = new ProductoVO("1", "caja", "metalica negra", "50000");
-        ProductoDAO productoDAO = new ProductoDAO(productoVO);
-        productoDAO.actualizarRegistro();
-        //System.out.println(productoDAO.consultaGeneral());
-    }
+//    public static void main(String[] args) {
+//        ProductoVO productoVO = new ProductoVO();
+//        productoVO.setIdProducto("4");
+//        ProductoDAO productoDAO = new ProductoDAO(productoVO);
+//        productoDAO.eliminarRegistro();
+//        //System.out.println(productoDAO.consultaGeneral());
+//    }
 }
