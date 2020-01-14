@@ -15,8 +15,6 @@ public interface InterfaceCrud {
 
     public abstract boolean agregarRegistro();
 
-    public abstract ArrayList consultarRegistro();
-
     public abstract ArrayList consultaGeneral();
 
     public abstract boolean actualizarRegistro();

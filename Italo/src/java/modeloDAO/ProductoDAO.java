@@ -54,27 +54,69 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
 
     @Override
     public boolean agregarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        try {
+            query = "INSERT INTO producto (idProducto,nombre,descripcion,precio) VALUES (NULL,'" + nombre + "','" + descripcion + "','" + precio + "')";
 
-    @Override
-    public ArrayList consultarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            statement.executeUpdate(query);
+            operacion = true;
+        } catch (Exception e) {
+            System.out.println("Error al registrar el Producto " + e.toString());
+        }
+        return operacion;
     }
 
     @Override
     public ArrayList consultaGeneral() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<ProductoVO> arrayProductos = new ArrayList<>();
+        try {
+            query = "SELECT * FROM producto ";
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                ProductoVO productoTmp = new ProductoVO();
+
+                productoTmp.setIdProducto(resultSet.getString(1));
+                productoTmp.setNombre(resultSet.getString(2));
+                productoTmp.setDescripcion(resultSet.getString(3));
+                productoTmp.setPrecio(resultSet.getString(4));
+
+                arrayProductos.add(productoTmp);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al consultar los Productos " + e.toString());
+        }
+        return arrayProductos;
     }
 
     @Override
     public boolean actualizarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        try {
+            query = "UPDATE producto SET nombre = '" + nombre + "',descripcion = '" + descripcion + "', precio = '" + precio + "' WHERE producto.idProducto = " + idProducto + "";
+            statement.executeUpdate(query);
+            operacion = true;
+        } catch (Exception e) {
+            System.out.println("Error al actualizar el Producto " + e.toString());
+        }
+        return operacion;
     }
 
     @Override
     public boolean eliminarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            query = "DELETE FROM producto WHERE producto.idProducto = "+idProducto;
+            statement.executeUpdate(query);
+            operacion = true;
+        } catch (Exception e) {
+            System.out.println("Error al borrar el Producto " + e.toString());
+        }
+        return operacion;
     }
 
+//    public static void main(String[] args) {
+//        ProductoVO productoVO = new ProductoVO();
+//        productoVO.setIdProducto("4");
+//        ProductoDAO productoDAO = new ProductoDAO(productoVO);
+//        productoDAO.eliminarRegistro();
+//        //System.out.println(productoDAO.consultaGeneral());
+//    }
 }
