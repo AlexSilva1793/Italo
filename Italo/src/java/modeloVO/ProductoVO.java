@@ -9,14 +9,14 @@ package modeloVO;
  *
  * @author Admin
  */
-public class productoVO {
+public class ProductoVO {
 
     private String idProducto, nombre, descripcion, precio;
 
-    public productoVO() {
+    public ProductoVO() {
     }
 
-    public productoVO(String idProducto, String nombre, String descripcion, String precio) {
+    public ProductoVO(String idProducto, String nombre, String descripcion, String precio) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
