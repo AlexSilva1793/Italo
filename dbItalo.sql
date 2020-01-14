@@ -21,11 +21,11 @@ USE `italo` ;
 -- Table `italo`.`productos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `italo`.`producto` (
-  `idproducto` INT NOT NULL AUTO_INCREMENT,
+  `idProducto` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `descripcion` VARCHAR(45) NOT NULL,
   `precio` VARCHAR(10) NOT NULL,
-  PRIMARY KEY (`idproducto`))
+  PRIMARY KEY (`idProducto`))
 ENGINE = InnoDB;
 
 
