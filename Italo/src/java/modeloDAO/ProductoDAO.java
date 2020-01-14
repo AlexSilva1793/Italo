@@ -67,7 +67,24 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
 
     @Override
     public ArrayList consultaGeneral() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<ProductoVO> arrayProductos = new ArrayList<>();
+        try {
+            query = "SELECT * FROM producto ";
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {                
+                ProductoVO productoTmp = new ProductoVO();
+                
+                productoTmp.setIdProducto(resultSet.getString(1));
+                productoTmp.setNombre(resultSet.getString(2));
+                productoTmp.setDescripcion(resultSet.getString(3));
+                productoTmp.setPrecio(resultSet.getString(4));
+                
+                arrayProductos.add(productoTmp);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al consultar los Productos " + e.toString());
+        }
+        return arrayProductos;
     }
 
     @Override
@@ -81,8 +98,8 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
     }
 
     public static void main(String[] args) {
-        ProductoVO productoVO = new ProductoVO("", "botilito", "metalico negro", "20000");
-        ProductoDAO productoDAO = new ProductoDAO(productoVO);
-        productoDAO.agregarRegistro();
+        //ProductoVO productoVO = new ProductoVO("", "botilito", "metalico negro", "20000");
+        ProductoDAO productoDAO = new ProductoDAO();
+        System.out.println(productoDAO.consultaGeneral());
     }
 }
