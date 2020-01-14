@@ -1,0 +1,74 @@
+select distinct maker from product where type='Printer'
+
+Select model,ram,screen from Laptop where price > 1000
+
+Select * from Printer where color = 'y'
+
+Select model,speed,hd from PC where (price < 600) and ((cd=''12x) or (cd='24x'))
+
+Select DISTINCT Product.maker,Laptop.speed from Product inner join Laptop on Product.model = Laptop.model where Laptop.hd >= 10
+
+
+Select DISTINCT Product.model, PC.price from Product inner join PC on Product.model = PC.model where Product.maker= 'B'
+UNION
+Select DISTINCT Product.model, Laptop.price from Product inner join Laptop on Product.model = Laptop.model where Product.maker= 'B'
+UNION
+Select DISTINCT Product.model, Printer.price from Product inner join Printer on Product.model = Printer.model where Product.maker= 'B'
+
+Select Product.maker from Product where type in ('PC')
+EXCEPT 
+Select Product.maker from Product where type in ('Laptop')
+
+Select DISTINCT Product.maker from Product inner join PC on Product.model = PC.model where PC.speed >= 450
+
+Select DISTINCT  model, price from Printer where price >= (select MAX(price) from Printer)
+
+Select AVG(speed) from PC
+
+Select AVG(speed) from Laptop where price > 1000
+
+Select AVG(speed) from PC inner join Product on PC.model = Product.model where maker in ('A')
+
+Select Ships.class,Ships.name,Classes.country from Ships inner join Classes on Ships.class = Classes.class where Classes.numGuns>=10
+
+Select hd from PC group by hd having (count(hd) >=2)
+
+Select DISTINCT  Product.type, Laptop.model, Laptop.speed from Laptop inner join Product on Laptop.model = Product.model where Laptop.speed <(Select DISTINCT 
+ min(speed) from PC)
+
+
+Select maker,min(price) as price from Printer inner join Product on Product.model=Printer.model  where Printer.color='y'
+group by maker having min(price) <280
+
+
+select maker,avg(screen) as Avg_screen from product inner join laptop on product.model=laptop.model group by maker
+
+
+Select maker,count(model) from product where type ='PC'
+ group by maker having count(model) >=3
+ 	
+Select maker,max(price) as Max_price from product inner join pc on product.model= pc.model group by maker
+
+Select speed, avg(price) as Avg_price from pc where speed>600 group by speed
+
+Select maker from product inner join pc on product.model=pc.model where speed >= 750
+intersect
+Select maker from product inner join laptop on product.model=laptop.model where speed >= 750
+
+ select model from pc where price=(select max(price) from pc)
+union
+select model from laptop where price=(select max(price) from laptop)
+union
+select model from printer where price=(select max(price) from printer)
+having price = all(select max(price) from pc,laptop,printer)
+
+
+27------------
+Select maker, avg(hd) as Avg_hd from product full join pc on product.model = pc.model full join printer on product.model = printer.model where product.type in('pc','printer') group by maker
+
+34---------------
+Select DISTINCT   name from classes,ships where displacement>=35 and launched > 1922
+
+
+35 ------ no entendi
+
