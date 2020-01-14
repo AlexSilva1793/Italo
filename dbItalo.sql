@@ -20,12 +20,12 @@ USE `italo` ;
 -- -----------------------------------------------------
 -- Table `italo`.`productos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `italo`.`productos` (
-  `idproductos` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `italo`.`producto` (
+  `idproducto` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   `descripcion` VARCHAR(45) NOT NULL,
   `precio` VARCHAR(10) NOT NULL,
-  PRIMARY KEY (`idproductos`))
+  PRIMARY KEY (`idproducto`))
 ENGINE = InnoDB;
 
 
