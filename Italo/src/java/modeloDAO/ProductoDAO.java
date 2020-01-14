@@ -71,14 +71,14 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
         try {
             query = "SELECT * FROM producto ";
             resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {                
+            while (resultSet.next()) {
                 ProductoVO productoTmp = new ProductoVO();
-                
+
                 productoTmp.setIdProducto(resultSet.getString(1));
                 productoTmp.setNombre(resultSet.getString(2));
                 productoTmp.setDescripcion(resultSet.getString(3));
                 productoTmp.setPrecio(resultSet.getString(4));
-                
+
                 arrayProductos.add(productoTmp);
             }
         } catch (Exception e) {
@@ -89,7 +89,15 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
 
     @Override
     public boolean actualizarRegistro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        try {
+            query = "UPDATE producto SET nombre = '" + nombre + "',descripcion = '" + descripcion + "', precio = '" + precio + "' WHERE producto.idProducto = " + idProducto + "";
+            statement.executeUpdate(query);
+            operacion = true;
+        } catch (Exception e) {
+            System.out.println("Error al actualizar el Producto " + e.toString());
+        }
+        return operacion;
     }
 
     @Override
@@ -98,8 +106,9 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
     }
 
     public static void main(String[] args) {
-        //ProductoVO productoVO = new ProductoVO("", "botilito", "metalico negro", "20000");
-        ProductoDAO productoDAO = new ProductoDAO();
-        System.out.println(productoDAO.consultaGeneral());
+        ProductoVO productoVO = new ProductoVO("1", "caja", "metalica negra", "50000");
+        ProductoDAO productoDAO = new ProductoDAO(productoVO);
+        productoDAO.actualizarRegistro();
+        //System.out.println(productoDAO.consultaGeneral());
     }
 }
