@@ -37,7 +37,7 @@ public class ProductoControlador extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         int opcion = Integer.parseInt(request.getParameter("opcion"));
-        String idProducto = request.getParameter("textIdProducto");
+        String idProducto = request.getParameter("txtIdProducto");
         String nombre = request.getParameter("txtNombre");
         String descripcion = request.getParameter("txtDescripcion");
         String precio = request.getParameter("txtPrecio");
@@ -51,7 +51,7 @@ public class ProductoControlador extends HttpServlet {
                     request.setAttribute("mensajeExito", "<script>alert('El producto fue registrado correctamente');</script>");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("mensajeError", "<script>alert('El producto pudo ser registrado');</script>");
+                    request.setAttribute("mensajeError", "<script>alert('El producto no pudo ser registrado');</script>");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
                 break;
@@ -60,6 +60,13 @@ public class ProductoControlador extends HttpServlet {
             case 3://Actualizar Producto
                 break;
             case 4://Eliminar Producto
+                if (productoDAO.eliminarRegistro()) {
+                    request.setAttribute("mensajeExito", "<script>alert('El producto fue borrado correctamente');</script>");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("mensajeError", "<script>alert('El producto no pudo ser borrado');</script>");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
                 break;
         }
     }
