@@ -26,7 +26,7 @@
     <body>
         <nav class="navbar navbar-dark bg-dark">
             <div class="container">
-                <a href="index.jsp" class="navbar-brand"> Productos Italo</a>
+                <a href="index.jsp" class="navbar-brand"> Productos Bicicleteria</a>
             </div>
         </nav>
         <div class="container p-4">
@@ -63,7 +63,7 @@
 
                 <div class="col-md-8">
                     <h2>Productos</h2>
-                    <table class="table table-bordered">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>Nombre</th>

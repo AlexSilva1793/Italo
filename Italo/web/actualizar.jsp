@@ -19,7 +19,7 @@
     <body>
         <nav class="navbar navbar-dark bg-dark">
             <div class="container">
-                <a href="index.jsp" class="navbar-brand"> Productos Italo</a>
+                <a href="index.jsp" class="navbar-brand"> Productos Bicicleteria</a>
             </div>
         </nav>
 
