@@ -7,6 +7,8 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,7 +43,7 @@ public class ProductoControlador extends HttpServlet {
         String nombre = request.getParameter("txtNombre");
         String descripcion = request.getParameter("txtDescripcion");
         String precio = request.getParameter("txtPrecio");
-        
+
         ProductoVO productoVO = new ProductoVO(idProducto, nombre, descripcion, precio);
         ProductoDAO productoDAO = new ProductoDAO(productoVO);
 
@@ -56,8 +58,19 @@ public class ProductoControlador extends HttpServlet {
                 }
                 break;
             case 2://Consultar Producto por Id
+                ArrayList<ProductoVO> producto = productoDAO.consultarRegistro();
+                request.setAttribute("producto", producto);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("actualizar.jsp");
+                dispatcher.forward(request, response);
                 break;
             case 3://Actualizar Producto
+                if (productoDAO.actualizarRegistro()) {
+                    request.setAttribute("mensajeExito", "<script>alert('El producto fue actualizado correctamente');</script>");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("mensajeError", "<script>alert('El producto no pudo ser actualizado');</script>");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
                 break;
             case 4://Eliminar Producto
                 if (productoDAO.eliminarRegistro()) {
