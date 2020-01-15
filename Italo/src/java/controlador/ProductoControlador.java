@@ -55,7 +55,7 @@ public class ProductoControlador extends HttpServlet {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
                 break;
-            case 2://Consultar Producto
+            case 2://Consultar Producto por Id
                 break;
             case 3://Actualizar Producto
                 break;

@@ -67,6 +67,28 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
     }
 
     @Override
+    public ArrayList consultarRegistro() {
+        ArrayList<ProductoVO> arrayProductos = new ArrayList<>();
+        try {
+            query = "SELECT * FROM producto WHERE producto.idProducto= " +idProducto;
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                ProductoVO productoTmp = new ProductoVO();
+
+                productoTmp.setIdProducto(resultSet.getString(1));
+                productoTmp.setNombre(resultSet.getString(2));
+                productoTmp.setDescripcion(resultSet.getString(3));
+                productoTmp.setPrecio(resultSet.getString(4));
+
+                arrayProductos.add(productoTmp);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al consultar el Producto " + e.toString());
+        }
+        return arrayProductos;
+    }
+
+    @Override
     public ArrayList consultaGeneral() {
         ArrayList<ProductoVO> arrayProductos = new ArrayList<>();
         try {
@@ -105,7 +127,7 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
     @Override
     public boolean eliminarRegistro() {
         try {
-            query = "DELETE FROM producto WHERE producto.idProducto = "+idProducto;
+            query = "DELETE FROM producto WHERE producto.idProducto = " + idProducto;
             statement.executeUpdate(query);
             operacion = true;
             CerrarConexion();
@@ -117,9 +139,10 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
 
 //    public static void main(String[] args) {
 //        ProductoVO productoVO = new ProductoVO();
-//        productoVO.setIdProducto("4");
+//        productoVO.setIdProducto("10");
 //        ProductoDAO productoDAO = new ProductoDAO(productoVO);
-//        productoDAO.eliminarRegistro();
-//        //System.out.println(productoDAO.consultaGeneral());
+//        
+//        
+//        System.out.println(productoDAO.consultaGeneral());
 //    }
 }
