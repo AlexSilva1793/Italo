@@ -59,6 +59,7 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
 
             statement.executeUpdate(query);
             operacion = true;
+            CerrarConexion();
         } catch (Exception e) {
             System.out.println("Error al registrar el Producto " + e.toString());
         }
@@ -94,6 +95,7 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
             query = "UPDATE producto SET nombre = '" + nombre + "',descripcion = '" + descripcion + "', precio = '" + precio + "' WHERE producto.idProducto = " + idProducto + "";
             statement.executeUpdate(query);
             operacion = true;
+            CerrarConexion();
         } catch (Exception e) {
             System.out.println("Error al actualizar el Producto " + e.toString());
         }
@@ -106,6 +108,7 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
             query = "DELETE FROM producto WHERE producto.idProducto = "+idProducto;
             statement.executeUpdate(query);
             operacion = true;
+            CerrarConexion();
         } catch (Exception e) {
             System.out.println("Error al borrar el Producto " + e.toString());
         }
