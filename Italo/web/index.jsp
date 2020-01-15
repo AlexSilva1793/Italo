@@ -64,6 +64,7 @@
                     <td><%=productoVO.getNombre()%></td>
                     <td><%=productoVO.getDescripcion()%></td>
                     <td><%=productoVO.getPrecio()%></td>
+                    <td><a href="Producto?opcion=2&txtIdProducto=<%=productoVO.getIdProducto()%>">Actualizar</a></td>
                     <td><a href="Producto?opcion=4&txtIdProducto=<%=productoVO.getIdProducto()%>">Eliminar</a></td>
                 </tr>
                 <%}%>
