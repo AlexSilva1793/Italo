@@ -48,10 +48,10 @@ public class ProductoControlador extends HttpServlet {
         switch (opcion) {
             case 1: //Registrar Producto
                 if (productoDAO.agregarRegistro()) {
-                    request.setAttribute("mensajeExito", "El producto fue registrado correctamente");
+                    request.setAttribute("mensajeExito", "<script>alert('El producto fue registrado correctamente');</script>");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("mensajeError", "El producto no pudo ser registrado");
+                    request.setAttribute("mensajeError", "<script>alert('El producto pudo ser registrado');</script>");
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
                 break;

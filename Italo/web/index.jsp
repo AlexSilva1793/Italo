@@ -4,16 +4,24 @@
     Author     : Admin
 --%>
 
+<%@page import="java.util.ArrayList"%>
+<%@page import="modeloDAO.ProductoDAO"%>
+<%@page import="modeloVO.ProductoVO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Productos Italo</title>
+        <%
+            ProductoVO productoVO = new ProductoVO();
+            ProductoDAO productoDAO = new ProductoDAO();
+            ArrayList<ProductoVO> arrayProductos = productoDAO.consultaGeneral();
+        %>
     </head>
     <body>
         <div>
-            <h1>Ingresa un producto</h1>
+            <h2>Ingresa un producto</h2>
             <form method="post" action="Producto">
                 <table>
                     <tr>
@@ -38,5 +46,28 @@
         ${mensajeExito}
         <% }%>
         <br><br>
+
+        <div>
+            <h2>Productos</h2>
+            <table>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+                <%
+                    for (int i = 0; i < arrayProductos.size(); i++) {
+                        productoVO = arrayProductos.get(i);
+                %>
+                <tr>>
+                    <td><%=productoVO.getNombre()%></td>
+                    <td><%=productoVO.getDescripcion()%></td>
+                    <td><%=productoVO.getPrecio()%></td>
+                </tr>
+                <%}%>
+            </table>
+
+        </div>
     </body>
 </html>
