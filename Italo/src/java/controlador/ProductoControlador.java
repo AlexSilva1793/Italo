@@ -38,10 +38,10 @@ public class ProductoControlador extends HttpServlet {
 
         int opcion = Integer.parseInt(request.getParameter("opcion"));
         String idProducto = request.getParameter("textIdProducto");
-        String nombre = request.getParameter("textNombre");
-        String descripcion = request.getParameter("textDescripcion");
-        String precio = request.getParameter("textPrecio");
-
+        String nombre = request.getParameter("txtNombre");
+        String descripcion = request.getParameter("txtDescripcion");
+        String precio = request.getParameter("txtPrecio");
+        
         ProductoVO productoVO = new ProductoVO(idProducto, nombre, descripcion, precio);
         ProductoDAO productoDAO = new ProductoDAO(productoVO);
 
