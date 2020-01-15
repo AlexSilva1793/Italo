@@ -33,20 +33,21 @@
                     <h2>Ingresa un producto</h2>
                     <div class="card card-body">
                         <form method="post" action="Producto">
-                            <table>
-                                <tr>
-                                    <th>
-                                        Nombre del Producto<br>
-                                        <input type="text" name="txtNombre" required><br><br>
-                                        Descripcion del Producto<br>
-                                        <input type="text" name="txtDescripcion" required><br><br>
-                                        Precio del Producto<br>
-                                        <input type="text" name="txtPrecio" required><br><br>
-                                    </th>
-                                </tr>
-                            </table><br>
-                            <button>Registrar Producto</button>
+
+                            <div class="form-group">
+                                <input type="text" name="txtNombre" class="form-control" placeholder="Nombre del Producto" autofocus required>
+                            </div>
+
+                            <div class="form-group">
+                                <textarea  name="txtDescripcion" class="form-control" row="2" placeholder="Descripcion del Producto" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="txtPrecio" class="form-control" placeholder="Precio del Producto" required><br><br>
+                            </div>
+
                             <input type="hidden" name="opcion" value="1">
+                            <input type="submit" class="btn btn-success btn-block" name="registrarProducto" value="Registrar Producto">
                         </form>
                     </div>
                 </div>
