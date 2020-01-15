@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Productos Italo</title>
+        <title>Productos Bicicleteria</title>
         <%
             ProductoVO productoVO = new ProductoVO();
             ProductoDAO productoDAO = new ProductoDAO();
