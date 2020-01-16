@@ -50,10 +50,10 @@ public class ProductoControlador extends HttpServlet {
         switch (opcion) {
             case 1: //Registrar Producto
                 if (productoDAO.agregarRegistro()) {
-                    request.setAttribute("mensajeExito", "<script>alert('El producto fue registrado correctamente');</script>");
+                    
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("mensajeError", "<script>alert('El producto no pudo ser registrado');</script>");
+                    
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
                 break;
@@ -65,19 +65,19 @@ public class ProductoControlador extends HttpServlet {
                 break;
             case 3://Actualizar Producto
                 if (productoDAO.actualizarRegistro()) {
-                    request.setAttribute("mensajeExito", "<script>alert('El producto fue actualizado correctamente');</script>");
+                    
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("mensajeError", "<script>alert('El producto no pudo ser actualizado');</script>");
+                    
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
                 break;
             case 4://Eliminar Producto
                 if (productoDAO.eliminarRegistro()) {
-                    request.setAttribute("mensajeExito", "<script>alert('El producto fue borrado correctamente');</script>");
+                    
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 } else {
-                    request.setAttribute("mensajeError", "<script>alert('El producto no pudo ser borrado');</script>");
+                    
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
                 break;

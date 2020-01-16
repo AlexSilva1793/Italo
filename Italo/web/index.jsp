@@ -20,8 +20,7 @@
         %>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <!-- Font Awesome -->
-        <script src="https://kit.fontawesome.com/0c295b74ed.js" crossorigin="anonymous"></script>
+
     </head>
     <body>
         <nav class="navbar navbar-dark bg-dark">
@@ -53,12 +52,6 @@
                         </form>
                     </div>
                 </div>
-                <% if (request.getAttribute(
-                            "mensajeError") != null) {  %> 
-                ${mensajeError}
-                <% } else { %>
-                ${mensajeExito}
-                <% }%>
 
 
                 <div class="col-md-8">
@@ -82,8 +75,8 @@
                                 <td><%=productoVO.getDescripcion()%></td>
                                 <td><%=productoVO.getPrecio()%></td>
                                 <td>
-                                    <a href="Producto?opcion=2&txtIdProducto=<%=productoVO.getIdProducto()%>" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
-                                    <a href="Producto?opcion=4&txtIdProducto=<%=productoVO.getIdProducto()%>" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                    <a href="Producto?opcion=2&txtIdProducto=<%=productoVO.getIdProducto()%>" class="btn btn-secondary">Editar</a>
+                                    <a href="Producto?opcion=4&txtIdProducto=<%=productoVO.getIdProducto()%>" class="btn btn-danger">Borrar</a>
                                 </td>
                             </tr>
                             <%}%>
