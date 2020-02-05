@@ -11,16 +11,17 @@ package modeloVO;
  */
 public class ProductoVO {
 
-    private String idProducto, nombre, descripcion, precio;
+    private String idProducto, nombre, descripcion, precio, color;
 
     public ProductoVO() {
     }
 
-    public ProductoVO(String idProducto, String nombre, String descripcion, String precio) {
+    public ProductoVO(String idProducto, String nombre, String descripcion, String precio, String color) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
+        this.color = color;
     }
 
     public String getIdProducto() {
@@ -55,9 +56,19 @@ public class ProductoVO {
         this.precio = precio;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
-        return "productoVO{" + "idProducto=" + idProducto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + '}';
+        return "ProductoVO{" + "idProducto=" + idProducto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", color=" + color + '}';
     }
+
+    
 
 }

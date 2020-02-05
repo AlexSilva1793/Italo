@@ -26,7 +26,7 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
     private String query = null;
     private boolean operacion = false;
 
-    private String idProducto = "", nombre = "", descripcion = "", precio = "";
+    private String idProducto = "", nombre = "", descripcion = "", precio = "", color = "";
 
     public ProductoDAO() {
         try {
@@ -47,6 +47,7 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
             nombre = productoVO.getNombre();
             descripcion = productoVO.getDescripcion();
             precio = productoVO.getPrecio();
+            color = productoVO.getColor();
         } catch (Exception e) {
             System.out.println("Error" + e.toString());
         }
@@ -55,7 +56,7 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
     @Override
     public boolean agregarRegistro() {
         try {
-            query = "INSERT INTO producto (idProducto,nombre,descripcion,precio) VALUES (NULL,'" + nombre + "','" + descripcion + "','" + precio + "')";
+            query = "INSERT INTO producto (idProducto,nombre,descripcion,precio,color) VALUES (NULL,'" + nombre + "','" + descripcion + "','" + precio + "','"+color+"')";
 
             statement.executeUpdate(query);
             operacion = true;
@@ -70,7 +71,7 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
     public ArrayList consultarRegistro() {
         ArrayList<ProductoVO> arrayProductos = new ArrayList<>();
         try {
-            query = "SELECT * FROM producto WHERE producto.idProducto= " +idProducto;
+            query = "SELECT * FROM producto WHERE producto.idProducto= " + idProducto;
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 ProductoVO productoTmp = new ProductoVO();
@@ -79,6 +80,7 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
                 productoTmp.setNombre(resultSet.getString(2));
                 productoTmp.setDescripcion(resultSet.getString(3));
                 productoTmp.setPrecio(resultSet.getString(4));
+                productoTmp.setColor(resultSet.getString(5));
 
                 arrayProductos.add(productoTmp);
             }
@@ -101,6 +103,7 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
                 productoTmp.setNombre(resultSet.getString(2));
                 productoTmp.setDescripcion(resultSet.getString(3));
                 productoTmp.setPrecio(resultSet.getString(4));
+                productoTmp.setColor(resultSet.getString(5));
 
                 arrayProductos.add(productoTmp);
             }
@@ -114,7 +117,7 @@ public class ProductoDAO extends Conexion implements InterfaceCrud {
     public boolean actualizarRegistro() {
 
         try {
-            query = "UPDATE producto SET nombre = '" + nombre + "',descripcion = '" + descripcion + "', precio = '" + precio + "' WHERE producto.idProducto = " + idProducto + "";
+            query = "UPDATE producto SET nombre = '" + nombre + "',descripcion = '" + descripcion + "', precio = '" + precio + "',color = '"+color+"' WHERE producto.idProducto = " + idProducto + "";
             statement.executeUpdate(query);
             operacion = true;
             CerrarConexion();

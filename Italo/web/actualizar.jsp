@@ -41,8 +41,14 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="txtPrecio" class="form-control" value="<c:out value="${producto.get(0).precio}"></c:out>" required><br><br>
+                                <input type="text" name="txtPrecio" class="form-control" value="<c:out value="${producto.get(0).precio}"></c:out>" required>
                             </div>
+                            
+                            <div class="form-group">
+                                <input type="text" name="txtColor" class="form-control" value="<c:out value="${producto.get(0).color}"></c:out>" required><br><br>
+                            </div>
+                            
+                            
                             <input type="hidden" name="txtIdProducto" value="<c:out value="${producto.get(0).idProducto}"></c:out>" >
 
                         <input type="hidden" name="opcion" value="3">

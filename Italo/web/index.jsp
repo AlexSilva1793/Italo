@@ -42,10 +42,14 @@
                             <div class="form-group">
                                 <textarea  name="txtDescripcion" class="form-control" row="2" placeholder="Descripcion del Producto" required></textarea>
                             </div>
+                            <div class="form-group">
+                                <input type="text" name="txtColor" class="form-control" placeholder="Color del Producto" required>
+                            </div>
 
                             <div class="form-group">
                                 <input type="text" name="txtPrecio" class="form-control" placeholder="Precio del Producto" required><br><br>
                             </div>
+                            
 
                             <input type="hidden" name="opcion" value="1">
                             <input type="submit" class="btn btn-success btn-block" name="registrarProducto" value="Registrar Producto">
@@ -61,6 +65,7 @@
                             <tr>
                                 <th>Nombre</th>
                                 <th>Descripcion</th>
+                                <th>Color</th>
                                 <th>Precio</th>
                                 <th>Acciones</th>
                             </tr>
@@ -73,6 +78,7 @@
                             <tr>
                                 <td><%=productoVO.getNombre()%></td>
                                 <td><%=productoVO.getDescripcion()%></td>
+                                <td><%=productoVO.getColor()%></td>
                                 <td><%=productoVO.getPrecio()%></td>
                                 <td>
                                     <a href="Producto?opcion=2&txtIdProducto=<%=productoVO.getIdProducto()%>" class="btn btn-secondary">Editar</a>

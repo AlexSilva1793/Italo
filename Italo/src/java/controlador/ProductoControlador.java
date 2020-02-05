@@ -43,8 +43,9 @@ public class ProductoControlador extends HttpServlet {
         String nombre = request.getParameter("txtNombre");
         String descripcion = request.getParameter("txtDescripcion");
         String precio = request.getParameter("txtPrecio");
+        String color = request.getParameter("txtColor");
 
-        ProductoVO productoVO = new ProductoVO(idProducto, nombre, descripcion, precio);
+        ProductoVO productoVO = new ProductoVO(idProducto, nombre, descripcion, precio,color);
         ProductoDAO productoDAO = new ProductoDAO(productoVO);
 
         switch (opcion) {
